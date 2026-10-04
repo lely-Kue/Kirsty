@@ -14,7 +14,7 @@ window.KIRSTY_DATA = {
     birthMonth: "October",
     university: "University",
     heroImage: "hero - Copy - Copy.jpg",
-    lakeHugImage: "./images/kirsty/lake-hug.jpg",
+    lakeHugImage: ".lake-hug.jpg",
     heartRoadImage: "./images/kirsty/heart-road.jpg",
     yogurtSnackImage: "./images/kirsty/yogurt-snack.jpg"
   },
