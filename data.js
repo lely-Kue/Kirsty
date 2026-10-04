@@ -13,7 +13,7 @@ window.KIRSTY_DATA = {
     age: 22,
     birthMonth: "October",
     university: "University",
-    heroImage: "./images/kirsty/hero.jpg",
+    heroImage: "hero - Copy - Copy.jpg",
     lakeHugImage: "./images/kirsty/lake-hug.jpg",
     heartRoadImage: "./images/kirsty/heart-road.jpg",
     yogurtSnackImage: "./images/kirsty/yogurt-snack.jpg"
