@@ -28,7 +28,7 @@ window.KIRSTY_DATA = {
       title: "Somewhere Only We Know",
       artist: "Lily Allen",
       tag: "Sad & Deeply Impactful • Artist Vocals",
-      src: "./audio/impactful-friendship-song.mp3",
+      src: "impactful-friendship-song.mp3",
       note: "A tender, emotional vocal song about quiet companionship, university memories, and having a safe place only the two of you know."
     },
     {
