@@ -1,0 +1,294 @@
+/* ==============================================================================
+   KIRSTY WANGU'S 22ND BIRTHDAY EXPERIENCE - STYLES & SCRAPBOOK DESIGN SYSTEM
+   ============================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Italianno&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-cream: #FAF7F2;
+  --color-cream-dark: #F3ECE1;
+  --color-blush: #F9EBE8;
+  --color-dusty-rose: #D99B95;
+  --color-burgundy: #5B1C28;
+  --color-burgundy-dark: #3E101A;
+  --color-espresso: #201311;
+  --color-charcoal: #2E211E;
+  --color-gold: #C5A059;
+  --color-gold-light: #E7C97F;
+  --color-gold-dark: #9B7836;
+  
+  --font-serif: 'Playfair Display', serif;
+  --font-editorial: 'Cormorant Garamond', serif;
+  --font-script: 'Caveat', cursive;
+  --font-signature: 'Italianno', cursive;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Base Smooth Scrolling & Typography */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-espresso);
+  color: var(--color-espresso);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #FAF7F2;
+  margin: 0;
+  padding: 0;
+}
+
+/* Selection Color */
+::selection {
+  background-color: #5B1C28;
+  color: #FAF7F2;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #201311;
+}
+::-webkit-scrollbar-thumb {
+  background: #C5A059;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E7C97F;
+}
+
+/* Film Grain Overlay */
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Vintage Paper & Scrapbook Textures */
+.paper-texture {
+  background-color: #FAF6F0;
+  background-image: radial-gradient(#D99B95 0.75px, transparent 0.75px), radial-gradient(#C5A059 0.75px, #FAF6F0 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.vintage-letter {
+  background: #FFFDF9;
+  box-shadow: 
+    0 1px 1px rgba(0,0,0,0.04),
+    0 2px 2px rgba(0,0,0,0.04),
+    0 4px 4px rgba(0,0,0,0.04),
+    0 8px 12px rgba(0,0,0,0.06),
+    0 16px 24px rgba(0,0,0,0.08);
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  position: relative;
+}
+
+.vintage-letter::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(197, 160, 89, 0.35);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Washi Tape Details */
+.washi-tape {
+  position: absolute;
+  height: 28px;
+  width: 110px;
+  background-color: rgba(231, 201, 127, 0.75);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  z-index: 20;
+  border-left: 2px dashed rgba(255,255,255,0.6);
+  border-right: 2px dashed rgba(255,255,255,0.6);
+}
+
+.washi-tape-rose {
+  background-color: rgba(217, 155, 149, 0.75);
+}
+
+.washi-tape-gold {
+  background-color: rgba(197, 160, 89, 0.75);
+}
+
+.washi-tape-kraft {
+  background-color: rgba(184, 150, 122, 0.75);
+}
+
+/* Polaroid Photo Styling */
+.polaroid-card {
+  background: #FFFFFF;
+  padding: 12px 12px 34px 12px;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.08),
+    0 12px 24px -4px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(0, 0, 0, 0.02);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  cursor: pointer;
+}
+
+.polaroid-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 
+    0 20px 30px -8px rgba(91, 28, 40, 0.2),
+    0 10px 16px -4px rgba(0, 0, 0, 0.1);
+  z-index: 30;
+}
+
+/* Handwritten Script Elements */
+.font-handwritten {
+  font-family: var(--font-script);
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-signature {
+  font-family: var(--font-signature);
+}
+
+/* 3D Flip Card for 22 Things */
+.flip-card {
+  perspective: 1000px;
+  height: 220px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.flip-card-front {
+  background: linear-gradient(145deg, #FFFDF9, #F5EFEB);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.flip-card-back {
+  background: linear-gradient(145deg, #5B1C28, #3E101A);
+  color: #FAF7F2;
+  transform: rotateY(180deg);
+  border: 1px solid #C5A059;
+  box-shadow: 0 10px 20px rgba(62, 16, 26, 0.25);
+}
+
+/* Soft Glow Effects */
+.glow-gold {
+  text-shadow: 0 0 20px rgba(197, 160, 89, 0.4), 0 0 40px rgba(197, 160, 89, 0.2);
+}
+
+.glow-rose {
+  text-shadow: 0 0 20px rgba(217, 155, 149, 0.5);
+}
+
+.box-glow-gold {
+  box-shadow: 0 0 35px rgba(197, 160, 89, 0.25);
+}
+
+/* Lightbox Animation */
+.lightbox-fade-enter {
+  opacity: 0;
+  transform: scale(0.95);
+}
+.lightbox-fade-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Music Visualizer Waves */
+.equalizer-bar {
+  display: inline-block;
+  width: 3px;
+  background-color: #C5A059;
+  border-radius: 2px;
+  animation: equalizer 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes equalizer {
+  0% { height: 4px; }
+  50% { height: 18px; }
+  100% { height: 9px; }
+}
+
+.equalizer-bar:nth-child(1) { animation-delay: 0.1s; }
+.equalizer-bar:nth-child(2) { animation-delay: 0.4s; }
+.equalizer-bar:nth-child(3) { animation-delay: 0.2s; }
+.equalizer-bar:nth-child(4) { animation-delay: 0.5s; }
+
+/* Floating Sparkles & Light Leaks */
+@keyframes floatParticle {
+  0% { transform: translateY(0px) rotate(0deg); opacity: 0.2; }
+  50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
+  100% { transform: translateY(0px) rotate(360deg); opacity: 0.2; }
+}
+
+.floating-particle {
+  animation: floatParticle 8s ease-in-out infinite;
+}
+
+/* Candle flame animation */
+@keyframes flicker {
+  0%, 100% { transform: scale(1) rotate(-1deg); opacity: 0.95; }
+  25% { transform: scale(1.08) rotate(1.5deg); opacity: 1; }
+  50% { transform: scale(0.95) rotate(-0.5deg); opacity: 0.85; }
+  75% { transform: scale(1.05) rotate(2deg); opacity: 1; }
+}
+
+.candle-flame {
+  animation: flicker 1.4s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

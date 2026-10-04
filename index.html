@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Happy 22nd Birthday, Kirsty Wangu 🤍 | A Private Digital Scrapbook</title>
+  <meta name="description" content="A private digital scrapbook, love letter to friendship, and university time capsule dedicated to Paidamoyo Kirsty Makoni for her 22nd birthday.">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Happy 22nd Birthday, Kirsty Wangu 🤍">
+  <meta property="og:description" content="You are one of the most beautiful things university gave me. A private digital scrapbook celebrating sisterhood, quiet companionship, and 22 years of grace.">
+  <meta property="og:image" content="./images/kirsty/hero.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Italianno&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: { DEFAULT: '#FAF7F2', dark: '#F3ECE1' },
+            blush: { DEFAULT: '#F9EBE8', light: '#FFF5F3' },
+            rose: { dusty: '#D99B95' },
+            burgundy: { DEFAULT: '#5B1C28', dark: '#3E101A' },
+            espresso: { DEFAULT: '#201311', light: '#2E211E' },
+            gold: { DEFAULT: '#C5A059', light: '#E7C97F', dark: '#9B7836' }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            editorial: ['Cormorant Garamond', 'serif'],
+            handwritten: ['Caveat', 'cursive'],
+            signature: ['Italianno', 'cursive'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Scrapbook & Animation Styles -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body class="bg-[#FAF7F2] text-[#201311] antialiased selection:bg-[#5B1C28] selection:text-[#FAF7F2]">
+
+  <!-- Film grain subtle overlay -->
+  <div class="film-grain"></div>
+
+  <!-- ====================================================================
+      TOP SCRAPBOOK NAVIGATION RIBBON
+      ==================================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-[#120B0A]/85 backdrop-blur-md border-b border-[#C5A059]/30 text-[#FAF7F2] transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+      <a href="#landing" class="flex items-center gap-2 group">
+        <span className="text-lg">🤍</span>
+        <span class="font-serif tracking-wider text-sm sm:text-base text-[#FAF7F2] group-hover:text-[#E7C97F] transition">
+          Kirsty Wangu • 22
+        </span>
+      </a>
+
+      <!-- Quick Section Jump Links -->
+      <nav class="hidden md:flex items-center gap-5 text-xs font-sans tracking-widest uppercase text-[#FAF7F2]/75">
+        <a href="#hero" class="hover:text-[#E7C97F] transition">Hero</a>
+        <a href="#how-we-met" class="hover:text-[#E7C97F] transition">Our Story</a>
+        <a href="#room-memories" class="hover:text-[#E7C97F] transition">Room Memories</a>
+        <a href="#scrapbook" class="hover:text-[#E7C97F] transition">Photo Wall</a>
+        <a href="#twenty-two-things" class="hover:text-[#E7C97F] transition">22 Things</a>
+        <a href="#blessings" class="hover:text-[#E7C97F] transition">Blessings</a>
+        <a href="#prayer" class="hover:text-[#E7C97F] transition">Prayer</a>
+        <a href="#timeline" class="hover:text-[#E7C97F] transition">Timeline</a>
+        <a href="#final-letter" class="hover:text-[#E7C97F] transition">Final Letter</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button id="nav-music-btn" class="px-3 py-1.5 rounded-full bg-[#C5A059] text-[#201311] text-xs font-bold hover:bg-[#E7C97F] transition flex items-center gap-1.5 shadow">
+          <span>🎵 Music</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+      FLOATING MUSIC PLAYER (BOTTOM-RIGHT)
+      ==================================================================== -->
+  <aside id="music-player-container" class="fixed bottom-5 right-5 z-40">
+    <!-- Minimized pill button -->
+    <button id="music-pill-btn" class="hidden flex items-center gap-2.5 px-4 py-3 bg-[#201311] border border-[#C5A059] text-[#FAF7F2] rounded-full shadow-2xl hover:scale-105 transition-all">
+      <div class="flex gap-1 items-end h-4">
+        <span class="equalizer-bar"></span>
+        <span class="equalizer-bar"></span>
+        <span class="equalizer-bar"></span>
+      </div>
+      <span id="music-pill-title" class="text-xs font-medium tracking-wide">🎵 Lily Allen - Somewhere Only We Know</span>
+    </button>
+
+    <!-- Expanded Music Card -->
+    <div id="music-card" class="w-80 sm:w-88 p-4 bg-[#1E1210]/95 backdrop-blur-md border border-[#C5A059]/50 rounded-2xl shadow-2xl text-[#FAF7F2] space-y-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#C5A059] animate-pulse"></span>
+          <span class="text-[11px] uppercase tracking-wider text-[#C5A059] font-medium">Friendship Jukebox</span>
+        </div>
+        <button id="music-minimize-btn" class="text-xs text-[#FAF7F2]/60 hover:text-[#FAF7F2] transition">
+          ✕ Minimize
+        </button>
+      </div>
+
+      <div class="space-y-1">
+        <h4 id="player-track-title" class="text-sm font-semibold truncate text-[#FAF7F2]">
+          Somewhere Only We Know
+        </h4>
+        <p id="player-track-artist" class="text-xs text-[#D99B95] truncate">
+          Lily Allen • <span class="text-[#FAF7F2]/60">Sad & Deeply Impactful • Artist Vocals</span>
+        </p>
+      </div>
+
+      <!-- Controls -->
+      <div class="flex items-center justify-between pt-1">
+        <div class="flex items-center gap-2">
+          <button id="player-prev-btn" class="p-1.5 rounded-lg hover:bg-white/10 text-xs transition" title="Previous Track">
+            ⏮
+          </button>
+          <button id="player-play-btn" class="px-3 py-1.5 rounded-full bg-[#C5A059] text-[#201311] font-bold text-xs hover:bg-[#E7C97F] transition flex items-center gap-1.5">
+            ▶ Play
+          </button>
+          <button id="player-next-btn" class="p-1.5 rounded-lg hover:bg-white/10 text-xs transition" title="Next Track">
+            ⏭
+          </button>
+        </div>
+
+        <div class="flex items-center gap-1.5">
+          <span class="text-[10px] text-[#FAF7F2]/60">🔊</span>
+          <input id="player-volume-slider" type="range" min="0" max="1" step="0.05" value="0.7" class="w-16 h-1 bg-[#FAF7F2]/20 rounded-lg appearance-none cursor-pointer accent-[#C5A059]" />
+        </div>
+      </div>
+
+      <p id="player-status-note" class="text-[10px] text-[#C5A059]/80 italic pt-1 border-t border-white/5">
+        ✨ Now playing: Lily Allen & Keane vocal tracks
+      </p>
+    </div>
+  </aside>
+
+  <!-- ====================================================================
+      1. OPENING / LANDING LETTER EXPERIENCE
+      ==================================================================== -->
+  <section id="landing" class="relative min-h-screen flex items-center justify-center bg-[#120B0A] text-[#FAF7F2] p-6 pt-20 overflow-hidden">
+    <!-- Ambient glowing light leaks -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#5B1C28]/30 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#C5A059]/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-xl w-full text-center space-y-8 p-8 md:p-12 border border-[#C5A059]/40 rounded-3xl bg-[#1A100E]/90 backdrop-blur-md shadow-2xl">
+      <div class="inline-block px-4 py-1.5 rounded-full border border-[#C5A059]/40 text-[#C5A059] text-xs uppercase tracking-widest font-sans font-medium">
+        Private Digital Letter
+      </div>
+
+      <div class="space-y-3">
+        <h1 class="font-serif text-5xl md:text-6xl font-light tracking-wide text-[#FAF7F2] glow-gold">
+          Kirsty Wangu
+        </h1>
+        <p class="font-handwritten text-2xl md:text-3xl text-[#D99B95] tracking-wide">
+          Happy 22nd Birthday, Mother mhamha 🤍
+        </p>
+      </div>
+
+      <div class="py-4 border-y border-[#FAF7F2]/10 space-y-2">
+        <p class="font-editorial italic text-xl md:text-2xl text-[#FAF7F2]/90 leading-relaxed">
+          Before you scroll...<br>
+          I need you to know something.
+        </p>
+      </div>
+
+      <div>
+        <a
+          href="#hero"
+          id="open-letter-btn"
+          class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#C5A059] to-[#E7C97F] text-[#201311] font-semibold text-base shadow-lg shadow-[#C5A059]/20 hover:scale-105 active:scale-95 transition-all duration-300"
+        >
+          <span>Open Your Birthday Letter 💌</span>
+          <span class="text-xl group-hover:rotate-12 transition-transform duration-300">✨</span>
+        </a>
+        <p class="mt-3 text-xs text-[#FAF7F2]/50 tracking-wider">
+          ✨ Best experienced with sound on • Click to begin
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+      2. HERO SECTION
+      ==================================================================== -->
+  <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center px-4 py-24 bg-gradient-to-b from-[#120B0A] via-[#2A1516] to-[#FAF7F2] text-center overflow-hidden">
+    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-3/4 h-80 bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-4xl mx-auto space-y-6">
+      <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#C5A059]/40 bg-[#1E1210]/60 text-[#C5A059] text-xs md:text-sm font-sans tracking-widest uppercase backdrop-blur-sm">
+        <span>✨</span> A Private Time Capsule For Mother <span>✨</span>
+      </div>
+
+      <div class="space-y-3">
+        <h2 class="font-editorial italic text-2xl md:text-4xl text-[#D99B95] font-light max-w-2xl mx-auto leading-relaxed">
+          "To Paidamoyo Kirsty Makoni,<br>
+          <span class="text-[#FAF7F2]/90">my safe place at university, my unexpected blessing..."</span>
+        </h2>
+        <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-light text-[#FAF7F2] tracking-wide pt-2 glow-gold">
+          Happy 22nd Birthday, Kirsty.
+        </h1>
+      </div>
+
+      <!-- Kirsty's Hero Photograph in Scrapbook Polaroid Frame -->
+      <div class="pt-6 pb-4">
+        <div class="inline-block relative group">
+          <div class="washi-tape washi-tape-gold -top-3 left-1/2 -translate-x-1/2 -rotate-2"></div>
+
+          <div class="polaroid-card max-w-xs sm:max-w-md mx-auto rounded-lg transform -rotate-1 hover:rotate-0 transition-transform duration-500">
+            <div class="overflow-hidden rounded-md bg-[#FAF6F0] aspect-[4/5] relative">
+              <img
+                src="./images/kirsty/hero.jpg"
+                alt="Kirsty Wangu on Campus Steps"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              >
+              <div class="absolute bottom-2 right-2 px-3 py-1 bg-[#201311]/80 backdrop-blur-sm rounded-full text-[11px] font-sans text-[#E7C97F]">
+                The Birthday Girl ✨ 22
+              </div>
+            </div>
+            <div class="pt-4 text-center">
+              <p class="font-handwritten text-2xl text-[#5B1C28]">
+                Paidamoyo Kirsty Makoni 🤍
+              </p>
+              <p class="text-[11px] font-sans uppercase tracking-widest text-[#201311]/60 mt-0.5">
+                Campus Steps • University Days
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated Scroll Prompt -->
+      <div class="pt-8">
+        <a
+          href="#how-we-met"
+          class="inline-flex flex-col items-center gap-2 text-xs uppercase tracking-widest text-[#201311]/70 hover:text-[#5B1C28] transition-colors font-medium"
+        >
+          <span>Scroll down for our story</span>
+          <span class="text-lg animate-bounce text-[#C5A059]">↓</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+      3. HOW DID YOU BECOME THIS IMPORTANT?
+      ==================================================================== -->
+  <section id="how-we-met" class="py-24 px-4 sm:px-6 max-w-4xl mx-auto">
+    <div class="text-center space-y-3 mb-14">
+      <span class="font-handwritten text-2xl text-[#D99B95]">Chapter One</span>
+      <h2 class="font-serif text-3xl sm:text-5xl text-[#5B1C28] font-normal">
+        Some friendships happen. Ours became home.
+      </h2>
+      <p class="text-sm sm:text-base text-[#201311]/70 max-w-xl mx-auto font-sans">
+        A letter from the middle of assignments, deadlines, and quiet blessing.
+      </p>
+    </div>
+
+    <!-- Vintage Letter Card -->
+    <div class="vintage-letter rounded-3xl p-8 sm:p-14 bg-[#FFFDF9] relative">
+      <div class="washi-tape washi-tape-rose -top-3 left-12 rotate-2"></div>
+      <div class="washi-tape washi-tape-kraft -top-3 right-12 -rotate-3"></div>
+
+      <!-- Stanzas in rhythm -->
+      <div class="space-y-4 mb-10 pb-8 border-b border-[#C5A059]/20 text-center sm:text-left">
+        <p class="font-editorial text-xl sm:text-2xl text-[#201311]/80">University gave me lectures.</p>
+        <p class="font-editorial text-xl sm:text-2xl text-[#201311]/80">University gave me assignments.</p>
+        <p class="font-editorial text-xl sm:text-2xl text-[#201311]/80">University gave me deadlines.</p>
+        <p class="font-editorial text-xl sm:text-2xl text-[#201311]/80">University gave me stress.</p>
+        <p class="font-editorial text-2xl sm:text-3xl font-semibold text-[#5B1C28] italic">But somehow, among all of that...</p>
+        <p class="font-editorial text-2xl sm:text-3xl font-semibold text-[#5B1C28] italic">It also gave me you.</p>
+      </div>
+
+      <!-- Body Letter -->
+      <div class="font-sans text-base sm:text-lg text-[#201311]/85 leading-relaxed space-y-5">
+        <p>
+          You became one of the few people who made university feel less overwhelming and more like home. In a place where everyone is constantly rushing, competing, or pretending to have it all together, having you in my corner was a breath of fresh air.
+        </p>
+        <p>
+          I never had to put on a face for you. I never had to explain when I was exhausted, stressed, or just needing someone to sit with. You walked into my university journey and effortlessly became my sanctuary.
+        </p>
+      </div>
+
+      <!-- Pinned Sticky Notes -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-10 mt-10 border-t border-[#C5A059]/20">
+        <div class="p-4 rounded-xl shadow-md border -rotate-2 bg-[#FFF3F2] border-[#F2D5D0]">
+          <div class="w-6 h-2 bg-black/10 rounded-full mx-auto mb-2"></div>
+          <p class="font-handwritten text-lg sm:text-xl text-[#201311] leading-snug text-center">
+            "Mother mhamha, look at us surviving semester after semester 😭"
+          </p>
+        </div>
+        <div class="p-4 rounded-xl shadow-md border rotate-1 bg-[#FEF9E7] border-[#F9E79F]">
+          <div class="w-6 h-2 bg-black/10 rounded-full mx-auto mb-2"></div>
+          <p class="font-handwritten text-lg sm:text-xl text-[#201311] leading-snug text-center">
+            "Remember when we said we'd study at 7:00 PM and by 11:00 PM we were still talking about life?"
+          </p>
+        </div>
+        <div class="p-4 rounded-xl shadow-md border -rotate-1 bg-[#F5EEF8] border-[#E8DAEF]">
+          <div class="w-6 h-2 bg-black/10 rounded-full mx-auto mb-2"></div>
+          <p class="font-handwritten text-lg sm:text-xl text-[#201311] leading-snug text-center">
+            "My safest person on this entire campus 🤍"
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+      4. THE ROOM MEMORIES (COZY UNIVERSITY ROOM EXPERIENCE)
+      ==================================================================== -->
+  <section id="room-memories" class="py-24 px-4 bg-gradient-to-b from-[#FAF7F2] via-[#F3ECE1] to-[#FAF7F2]">
+    <div class="max-w-5xl mx-auto space-y-12">
+      <div class="text-center space-y-3">
+        <span class="font-handwritten text-2xl text-[#D99B95]">The Safe Haven</span>
+        <h2 class="font-serif text-3xl sm:text-5xl text-[#5B1C28]">
+          Sometimes we weren't even doing anything...
+        </h2>
+        <p class="font-editorial italic text-xl sm:text-2xl text-[#201311]/80 max-w-2xl mx-auto">
+          And somehow, those became some of my favourite memories.
+        </p>
+      </div>
+
+      <!-- The Central Emotional Quote -->
+      <div class="max-w-2xl mx-auto p-8 rounded-2xl bg-[#FFFDF9] border border-[#C5A059]/30 shadow-xl text-center space-y-3 relative">
+        <span class="text-4xl text-[#C5A059]/40 absolute top-4 left-6">“</span>
+        <div class="space-y-1 font-serif text-xl sm:text-2xl text-[#5B1C28] leading-relaxed">
+          <p>You doing your thing.</p>
+          <p>Me doing mine.</p>
+          <p>Both of us in the same room.</p>
+          <p>Sometimes talking.</p>
+          <p>Sometimes laughing.</p>
+          <p>Sometimes completely silent.</p>
+          <p class="h-2"></p>
+          <p class="font-bold">And somehow... that was enough.</p>
+        </div>
+        <span class="text-4xl text-[#C5A059]/40 absolute bottom-2 right-6">”</span>
+        <p class="text-xs font-sans uppercase tracking-widest text-[#201311]/50 pt-3">
+          The Essence of Mother & Mother
+        </p>
+      </div>
+
+      <!-- Interactive Room Objects Grid -->
+      <div class="space-y-6">
+        <div class="text-center">
+          <p class="text-xs uppercase tracking-widest font-sans font-semibold text-[#5B1C28]">
+            Click an object from our room to unlock a memory
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3" id="room-items-container">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Revealed Room Memory Box -->
+        <div id="room-memory-display" class="p-6 sm:p-8 rounded-2xl bg-[#FFFDF9] border border-[#C5A059]/40 shadow-lg text-center max-w-2xl mx-auto transition-all">
+          <span class="font-handwritten text-xl text-[#D99B95]">Room Memory Note</span>
+          <h3 id="room-memory-title" class="font-serif text-2xl text-[#5B1C28] mt-1 mb-3">
+            Laptops & Assignments
+          </h3>
+          <p id="room-memory-text" class="font-sans text-base sm:text-lg text-[#201311]/85 leading-relaxed italic">
+            "Submitting assignments at 23:59 while lying on the floor questioning all our life choices, but laughing through it."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+      5. PHOTO SCRAPBOOK WALL
+      ==================================================================== -->
+  <section id="scrapbook" class="py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+    <div class="text-center space-y-3 mb-16">
+      <span class="font-handwritten text-2xl text-[#D99B95]">Photo Scrapbook</span>
+      <h2 class="font-serif text-3xl sm:text-5xl text-[#5B1C28]">
+        Snapshots of Sisterhood
+      </h2>
+      <p class="text-sm sm:text-base text-[#201311]/70 max-w-lg mx-auto font-sans">
+        Every photograph is a timestamp of quiet comfort, campus road trips, and unconditional laughter. Click any photo to enlarge.
+      </p>
+    </div>
+
+    <!-- Dynamic Scrapbook Wall -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6" id="photo-wall-grid">
+      <!-- Populated by JS with real photographs -->
+    </div>
+
+    <p class="text-center font-handwritten text-2xl text-[#D99B95] mt-12">
+      "Mother mhamha, look at us... we actually survived university 😭🤍"
+    </p>
+  </section>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 sm:p-6 backdrop-blur-md">
+    <div class="relative max-w-3xl w-full bg-[#FFFDF9] rounded-2xl p-4 sm:p-6 shadow-2xl space-y-4">
+      <button id="lightbox-close-btn" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#201311] text-[#FAF7F2] flex items-center justify-center text-sm hover:bg-[#5B1C28] transition">
+        ✕
+      </button>
+
+      <div class="max-h-[65vh] overflow-hidden rounded-xl bg-black/5 flex items-center justify-center">
+        <img id="lightbox-image" src="" alt="Memory" class="max-h-[65vh] w-auto object-contain mx-auto rounded-lg">
+      </div>
+
+      <div class="text-center space-y-1">
+        <p id="lightbox-caption" class="font-handwritten text-2xl sm:text-3xl text-[#5B1C28]"></p>
+        <p id="lightbox-note" class="font-sans text-sm text-[#201311]/70"></p>
+        <span id="lightbox-date" class="inline-block text-[11px] font-sans uppercase tracking-widest text-[#C5A059] font-semibold mt-1"></span>
+      </div>
+
+      <div class="flex justify-between items-center pt-2 border-t border-black/10">
+        <button id="lightbox-prev-btn" class="px-4 py-2 text-xs font-semibold rounded-full bg-[#FAF6F0] hover:bg-[#F3ECE1] text-[#201311] transition">
+          ← Previous
+        </button>
+        <span id="lightbox-counter" class="text-xs font-sans text-black/50">1 of 8</span>
+        <button id="lightbox-next-btn" class="px-4 py-2 text-xs font-semibold rounded-full bg-[#FAF6F0] hover:bg-[#F3ECE1] text-[#201311] transition">
+          Next →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+      6. THINGS I LOVE ABOUT US
+      ==================================================================== -->
+  <section id="things-we-love" class="py-24 px-4 bg-[#FAF6F0]">
+    <div class="max-w-4xl mx-auto space-y-12">
+      <div class="text-center space-y-3">
+        <span class="font-handwritten text-2xl text-[#D99B95]">Forever In My Heart</span>
+        <h2 class="font-serif text-3xl sm:text-5xl text-[#5B1C28]">
+          Things I hope we never forget
+        </h2>
+        <p class="text-sm sm:text-base text-[#201311]/70 font-sans">
+          The little pieces of sisterhood that mean the world to me.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="things-list-container">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+      7. 22 THINGS FOR 22 (INTERACTIVE FLIP CARDS)
+      ==================================================================== -->
+  <section id="twenty-two-things" class="py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+    <div class="text-center space-y-3 mb-10">
+      <span class="font-handwritten text-2xl text-[#D99B95]">Year 22 Dedication</span>
+      <h2 class="font-serif text-3xl sm:text-5xl text-[#5B1C28]">
+        22 Little Things I Want You to Know at 22
+      </h2>
+      <p class="text-sm sm:text-base text-[#201311]/70 max-w-xl mx-auto font-sans">
+        Twenty-two reminders of how deeply appreciated, capable, and cherished you are. Tap any card to flip it over!
+      </p>
+      <div class="flex justify-center gap-3 pt-2">
+        <button id="flip-all-btn" class="text-xs px-4 py-2 rounded-full border border-[#5B1C28] text-[#5B1C28] hover:bg-[#5B1C28] hover:text-[#FAF7F2] transition font-medium">
+          Reveal All 22 ✨
+        </button>
+        <button id="reset-cards-btn" class="text-xs px-4 py-2 rounded-full border border-[#201311]/20 text-[#201311]/60 hover:text-[#201311] transition">
+          Reset Cards
+        </button>
+      </div>
+    </div>
+
+    <!-- 22 Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="cards-grid">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- ====================================================================
+      8. BIBLE VERSES (BLESSING FOR YOUR 22ND YEAR)
+      ==================================================================== -->
+  <section id="blessings" class="py-24 px-4 bg-gradient-to-b from-[#1E1210] to-[#120B0A] text-[#FAF7F2] relative overflow-hidden">
+    <div class="absolute top-1/3 left-1/3 w-80 h-80 bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto space-y-12 relative z-10">
+      <div class="text-center space-y-3">
+        <span class="font-handwritten text-2xl text-[#C5A059]">Spiritual Covering</span>
+        <h2 class="font-serif text-3xl sm:text-5xl text-[#FAF7F2] font-normal glow-gold">
+          A Blessing for Your 22nd Year
+        </h2>
+        <p class="font-editorial italic text-lg sm:text-xl text-[#FAF7F2]/75 max-w-xl mx-auto">
+          "May His presence go before you, and His peace guard your heart."
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="verses-container">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+      9. MY PRAYER FOR YOU + CANDLE
+      ==================================================================== -->
+  <section id="prayer" class="py-24 px-4 sm:px-6 max-w-4xl mx-auto">
+    <div class="vintage-letter rounded-3xl p-8 sm:p-14 bg-[#FFFDF9] space-y-8 shadow-2xl relative">
+      <div class="text-center space-y-2">
+        <span class="font-handwritten text-2xl text-[#D99B95]">From The Depths of My Heart</span>
+        <h2 class="font-serif text-3xl sm:text-5xl text-[#5B1C28]">
+          A Personal Prayer for Kirsty at 22
+        </h2>
+        <p class="text-sm sm:text-base text-[#201311]/70 font-sans">
+          Prayed with all my heart for my best friend.
+        </p>
+      </div>
+
+      <div class="space-y-5 font-sans text-base sm:text-lg text-[#201311]/85 leading-relaxed">
+        <p>
+          Heavenly Father, thank You for the precious gift of Paidamoyo Kirsty Makoni. Thank You for crafting her with such elegance, humor, kindness, and strength. Thank You for orchestrating our steps so that our paths crossed in university, turning a stranger into my closest confidante and sister.
+        </p>
+        <p>
+          As Kirsty steps into 22 today, I ask that Your hand of divine favor rests heavily upon her life. Guide her footsteps in every lecture, every decision, every career opportunity, and every relationship. When she feels tired, pour fresh energy into her spirit. When she feels uncertain about tomorrow, remind her of the magnificent plans You have already established for her.
+        </p>
+        <p>
+          Surround her with genuine, loyal people who will uplift her and protect her peace. Open doors that no obstacle can shut, and give her the wisdom to walk boldly through them. Shield her from anxiety, grant her good health, and grant her laughter that echoes through her days.
+        </p>
+        <p>
+          Bless her family, her studies, her dreams, and her future. May this 22nd year be marked by deep serenity, overflowing breakthroughs, and the constant reminder that she is never walking alone.
+        </p>
+        <p class="font-serif italic text-xl text-[#5B1C28] text-center pt-2">
+          In Jesus' name, Amen. 🤍
+        </p>
+      </div>
+
+      <!-- Interactive Birthday Candle -->
+      <div class="pt-8 border-t border-[#C5A059]/20 flex flex-col items-center gap-4 text-center">
+        <div class="relative">
+          <div id="candle-flame" class="hidden candle-flame w-6 h-10 bg-gradient-to-t from-orange-400 via-amber-300 to-yellow-100 rounded-full blur-[1px] shadow-[0_0_20px_#f59e0b] mx-auto"></div>
+          <div id="candle-wick" class="w-1.5 h-4 bg-[#201311]/60 mx-auto rounded-t"></div>
+          <div class="w-8 h-16 bg-gradient-to-b from-[#F2D5D0] to-[#D99B95] rounded-t-sm shadow-md mt-1 border-t-2 border-[#5B1C28]"></div>
+        </div>
+
+        <div>
+          <button id="light-candle-btn" class="px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 shadow-md bg-[#C5A059] text-[#201311] hover:bg-[#E7C97F] hover:scale-105">
+            Light a Birthday Candle for Kirsty 🕯️
+          </button>
+          <p id="candle-status-text" class="text-xs text-[#201311]/60 mt-2 font-sans">
+            Click to send up a blessing for her new year
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+      10. MEMORY TIMELINE: "US, SO FAR..."
+      ==================================================================== -->
+  <section id="timeline" class="py-24 px-4 bg-[#FAF6F0]">
+    <div class="max-w-4xl mx-auto space-y-12">
+      <div class="text-center space-y-3">
+        <span class="font-handwritten text-2xl text-[#D99B95]">The Story</span>
+        <h2 class="font-serif text-3xl sm:text-5xl text-[#5B1C28]">
+          Us, so far...
+        </h2>
+        <p class="text-sm sm:text-base text-[#201311]/70 font-sans">
+          From our first cautious semester conversations to an unbreakable sisterhood.
+        </p>
+      </div>
+
+      <div class="relative border-l-2 border-[#C5A059]/40 ml-4 sm:ml-32 space-y-10" id="timeline-container">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+      11. "IF UNIVERSITY HAD A THANK-YOU NOTE" (CLIMAX SECTION)
+      ==================================================================== -->
+  <section id="thank-you-note" class="py-24 px-4 bg-gradient-to-b from-[#251315] to-[#120B0A] text-[#FAF7F2] text-center relative overflow-hidden">
+    <div class="max-w-3xl mx-auto space-y-8 relative z-10">
+      <span class="font-handwritten text-2xl text-[#C5A059]">The Confession</span>
+
+      <h2 class="font-editorial italic text-3xl sm:text-5xl text-[#FAF7F2]/90 leading-tight">
+        "If university asked me what the best thing it gave me was..."
+      </h2>
+
+      <div id="thank-you-pre-reveal" class="pt-4">
+        <button id="thank-you-trigger-btn" class="px-8 py-3.5 rounded-full bg-[#C5A059] text-[#201311] font-semibold text-sm hover:bg-[#E7C97F] hover:scale-105 transition-all shadow-lg">
+          (Take a breath, Mother 🤍)
+        </button>
+      </div>
+
+      <div id="thank-you-revealed" class="hidden space-y-8 pt-4">
+        <h3 class="font-serif text-6xl sm:text-8xl font-normal text-[#E7C97F] tracking-wide glow-gold">
+          Honestly? You.
+        </h3>
+
+        <!-- Real photo hug by the water -->
+        <div class="max-w-md mx-auto relative group">
+          <div class="washi-tape washi-tape-gold -top-3 left-1/2 -translate-x-1/2 -rotate-1"></div>
+          <div class="polaroid-card rounded-xl overflow-hidden bg-white p-3 pb-5 shadow-2xl transform rotate-1">
+            <div class="aspect-[3/4] overflow-hidden rounded-lg bg-black/10">
+              <img
+                src="./images/kirsty/lake-hug.jpg"
+                alt="Us hugging by the water"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              >
+            </div>
+            <p class="font-handwritten text-2xl text-[#5B1C28] mt-3">
+              My safest place at university. My unexpected blessing. 🤍
+            </p>
+          </div>
+        </div>
+
+        <p class="font-sans text-base sm:text-xl text-[#FAF7F2]/80 max-w-xl mx-auto leading-relaxed pt-2">
+          Degrees will gather dust, campus buildings will fade into memory, but having a friend who made the hard days feel manageable is something I will carry in my heart for the rest of my life.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+      12. FINAL LETTER
+      ==================================================================== -->
+  <section id="final-letter" class="py-24 px-4 sm:px-6 max-w-4xl mx-auto">
+    <div class="vintage-letter rounded-3xl p-8 sm:p-16 bg-[#FFFDF9] shadow-2xl relative space-y-8">
+      <div class="washi-tape washi-tape-gold -top-3 left-10 -rotate-2"></div>
+      <div class="washi-tape washi-tape-rose -top-3 right-10 rotate-3"></div>
+
+      <div class="text-center space-y-2 pb-6 border-b border-[#C5A059]/20">
+        <span class="font-handwritten text-2xl text-[#D99B95]">A Final Love Letter to Friendship</span>
+        <h2 class="font-serif text-3xl sm:text-5xl text-[#5B1C28]">
+          One last thing, Mother mhamha...
+        </h2>
+      </div>
+
+      <div class="space-y-6 font-sans text-base sm:text-lg text-[#201311]/85 leading-relaxed">
+        <p class="font-editorial italic text-2xl text-[#5B1C28] font-medium">Dear Kirsty,</p>
+        <p>If someone had told me before I started university that my safest place would end up being a friend I could sit in complete silence with, I wouldn't have understood what they meant. But now, with every semester behind us, I understand completely.</p>
+        <p>University has a way of being noisy, chaotic, and exhausting. You are constantly surrounded by people, yet it can be the loneliest place on earth. But having you changed that entire narrative for me. You turned an intimidating university environment into somewhere that felt warm, familiar, and safe.</p>
+        <p>The big memories are wonderful — the celebrations, the walks, the photos, the funny milestones. But what I hold closest to my heart are the ordinary, quiet ones. The moments where we were just existing in the room together. You working on your things, me working on mine. Glancing across the room and bursting out laughing without saying a word. That level of effortless comfort is something people search their entire lives to find in a friendship.</p>
+        <p>I am so deeply proud of the woman you are. You carry a quiet strength, a gentle heart, and a brilliance that shines even when you're just being yourself. As you step into 22, my deepest prayer is that this year treats you with the gentleness, honor, and joy you so abundantly deserve.</p>
+        <p>Thank you for being one of the best things university ever gave me. Thank you for being my anchor, my sister, and my favorite person to simply exist around.</p>
+        <p class="font-serif text-2xl text-[#5B1C28] font-bold pt-4 text-center">Happy 22nd Birthday, Mother. 🤍</p>
+        <p class="font-serif text-xl text-[#5B1C28] font-semibold text-center italic">I love you down, always.</p>
+      </div>
+
+      <div class="pt-8 border-t border-[#C5A059]/20 text-right">
+        <p class="font-handwritten text-3xl text-[#5B1C28]">
+          — Your forever university partner in crime 🤍
+        </p>
+      </div>
+    </div>
+
+    <!-- Surprise Button Trigger -->
+    <div class="text-center pt-14">
+      <button
+        id="surprise-trigger-btn"
+        class="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#5B1C28] to-[#3E101A] text-[#FAF7F2] font-semibold text-base shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 border border-[#C5A059]/40"
+      >
+        <span>Wait... there's one more thing 💌</span>
+        <span class="text-xl group-hover:rotate-12 transition-transform duration-300">✨</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+      13. SURPRISE MODAL (WITH FULL PHOTO COLLAGE)
+      ==================================================================== -->
+  <div id="surprise-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-[#120B0A]/95 text-[#FAF7F2] p-4 sm:p-6 backdrop-blur-xl overflow-y-auto">
+    <div class="relative max-w-3xl w-full text-center space-y-6 p-6 sm:p-10 border border-[#C5A059]/40 rounded-3xl bg-[#1A100E] shadow-2xl my-auto">
+      <button id="surprise-close-btn" class="absolute top-4 right-4 text-xs text-[#FAF7F2]/60 hover:text-[#FAF7F2] p-2">
+        ✕ Close
+      </button>
+
+      <div class="inline-block px-4 py-1 rounded-full border border-[#C5A059]/40 text-[#C5A059] text-xs uppercase tracking-widest font-sans font-medium">
+        Forever Toast
+      </div>
+
+      <div class="space-y-3">
+        <h3 class="font-serif text-3xl sm:text-5xl text-[#FAF7F2] leading-tight glow-gold">
+          Here's to 22. Here's to us.
+        </h3>
+        <p class="font-editorial italic text-xl sm:text-2xl text-[#D99B95] leading-relaxed">
+          Here's to everything we've survived. And here's to everything still waiting for us.
+        </p>
+      </div>
+
+      <!-- Real Photograph Scrapbook Collage -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+        <div class="polaroid-card p-2 pb-4 bg-white text-[#201311] rounded-xl transform -rotate-3 shadow-xl">
+          <div class="aspect-[3/4] overflow-hidden rounded-lg bg-black/5">
+            <img src="./images/kirsty/hero.jpg" alt="Mother mhamha" class="w-full h-full object-cover">
+          </div>
+          <p class="font-handwritten text-lg text-[#5B1C28] mt-2 text-center">Mother mhamha ✨</p>
+        </div>
+        <div class="polaroid-card p-2 pb-4 bg-white text-[#201311] rounded-xl transform rotate-1 shadow-xl">
+          <div class="aspect-[3/4] overflow-hidden rounded-lg bg-black/5">
+            <img src="./images/kirsty/lake-hug.jpg" alt="My Safe Place" class="w-full h-full object-cover">
+          </div>
+          <p class="font-handwritten text-lg text-[#5B1C28] mt-2 text-center">My Safe Place 🤍</p>
+        </div>
+        <div class="polaroid-card p-2 pb-4 bg-white text-[#201311] rounded-xl transform rotate-2 shadow-xl">
+          <div class="aspect-[3/4] overflow-hidden rounded-lg bg-black/5">
+            <img src="./images/kirsty/heart-road.jpg" alt="Here's to Us" class="w-full h-full object-cover">
+          </div>
+          <p class="font-handwritten text-lg text-[#5B1C28] mt-2 text-center">Here's to Us 🫶</p>
+        </div>
+      </div>
+
+      <div class="space-y-2 pt-2">
+        <h2 class="font-serif text-3xl sm:text-5xl text-[#E7C97F] glow-gold">
+          Happy Birthday, Kirsty Wangu. 🤍✨
+        </h2>
+        <p class="text-xs sm:text-sm text-[#FAF7F2]/80 max-w-lg mx-auto font-sans leading-relaxed pt-1">
+          May your 22nd year be as radiant, unforgettable, and deeply beautiful as the friendship you've given me.
+        </p>
+      </div>
+
+      <div class="pt-2 flex justify-center gap-3">
+        <button id="surprise-more-confetti-btn" class="px-6 py-2.5 rounded-full bg-[#C5A059] text-[#201311] font-semibold text-xs hover:bg-[#E7C97F] transition shadow">
+          More Confetti! 🎉
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+      FOOTER
+      ==================================================================== -->
+  <footer class="py-12 px-4 bg-[#120B0A] text-[#FAF7F2] text-center border-t border-[#C5A059]/20 space-y-4">
+    <p class="font-serif text-lg text-[#C5A059]">
+      Made with unconditional love for Paidamoyo Kirsty Makoni • Turning 22
+    </p>
+    <p class="text-xs text-[#FAF7F2]/50 font-sans">
+      "Sometimes we weren't even doing anything... and somehow that was enough."
+    </p>
+    <div class="pt-4">
+      <a href="#landing" class="text-xs uppercase tracking-widest text-[#D99B95] hover:text-[#FAF7F2] transition border-b border-[#D99B95]/40 pb-0.5">
+        ↑ Back to Top
+      </a>
+    </div>
+  </footer>
+
+  <!-- Native JavaScript Files (Zero Babel, Zero CORS issues, Instant Execution) -->
+  <script src="./js/data.js"></script>
+  <script src="./js/audio-player.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>

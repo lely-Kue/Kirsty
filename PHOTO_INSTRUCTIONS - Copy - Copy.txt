@@ -1,0 +1,23 @@
+HOW TO ADD & REPLACE PHOTOS FOR KIRSTY'S WEBSITE
+===================================================
+
+Currently, Kirsty's photo (the one on campus steps in the green #12 jersey) is already loaded as:
+- hero.jpg (The main hero portrait)
+- photo01.jpg through photo08.jpg (The Scrapbook Photo Wall polaroids)
+
+HOW TO ADD MORE OF YOUR REAL PHOTOS:
+1. Simply copy your photos into this folder ("images/kirsty/").
+2. Rename them to:
+   - photo01.jpg (First polaroid)
+   - photo02.jpg (Second polaroid)
+   - photo03.jpg (Third polaroid)
+   - photo04.jpg (Fourth polaroid)
+   - photo05.jpg (Fifth polaroid)
+   - photo06.jpg (Sixth polaroid)
+   - photo07.jpg (Seventh polaroid)
+   - photo08.jpg (Eighth polaroid)
+
+HOW TO EDIT THE CAPTIONS & DATES:
+1. Open "js/data.js" in any text editor (Notepad, VS Code, etc.).
+2. Find the "photos" section.
+3. Change the "caption", "date", or "note" for any photo!
