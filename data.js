@@ -14,8 +14,8 @@ window.KIRSTY_DATA = {
     birthMonth: "October",
     university: "University",
     heroImage: "hero - Copy - Copy.jpg",
-    lakeHugImage: ".lake-hug.jpg",
-    heartRoadImage: "./images/kirsty/heart-road.jpg",
+    lakeHugImage: "lake-hug.jpg",
+    heartRoadImage: "heart-road-Copy-Cop7.jpg",
     yogurtSnackImage: "./images/kirsty/yogurt-snack.jpg"
   },
 
@@ -25,7 +25,7 @@ window.KIRSTY_DATA = {
   playlist: [
     {
       id: "friendship-ballad",
-      title: "Somewhere Only We Know",
+      title: "heaven baby",
       artist: "Lily Allen",
       tag: "Sad & Deeply Impactful • Artist Vocals",
       src: "impactful-friendship-song.mp3",
@@ -33,7 +33,7 @@ window.KIRSTY_DATA = {
     },
     {
       id: "keane-vocal",
-      title: "Somewhere Only We Know",
+      title: "Heaven baby",
       artist: "Keane",
       tag: "Heartfelt Vocal Anthem • Original Vocals",
       src: "./audio/keane-somewhere-only-we-know.mp3",
@@ -45,7 +45,7 @@ window.KIRSTY_DATA = {
   landing: {
     header: "Kirsty Wangu",
     subHeader: "Happy 22nd Birthday, Mother mhamha 🤍",
-    teaser: "Before you scroll...\nI need you to know something.",
+    teaser: "Before you scroll...\nI need you to know something..Gangster havana marii",
     buttonText: "Open Your Birthday Letter 💌",
     subNotice: "✨ Best experienced with sound on"
   },
